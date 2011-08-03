@@ -11,7 +11,13 @@
                (file-readable-p template-file-name))
           (goto-char (point-min))
           (insert-file-contents template-file-name)
-          ;; 3rd arg 't: no error, return nil instead when search not successful
+
+          ;; 3rd arg of re-search-forward 't: no error,
+          ;; return nil instead when search not successful
+          (when (re-search-forward "[^\s-][^\s-][\s-]*FIlE_NAME" nil 't)
+            (delete-region (match-beginning 0) (point))
+            (insert (file-name-sans-extension (file-name-nondirectory file-name))))
+
           (if (re-search-forward "[^\s-][^\s-][\s-]*CURSOR_POS" nil 't)
               (delete-region (match-beginning 0) (point))
             (goto-char (point-max))))))))
