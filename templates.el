@@ -12,13 +12,8 @@
           (goto-char (point-min))
           (insert-file-contents template-file-name)
           ;; 3rd arg 't: no error, return nil instead when search not successful
-          (let ((e (re-search-forward "[^\s-][^\s-][\s-]*CURSOR_POS" nil 't)))
-            (if e
-                (progn
-                  (delete-region (match-beginning 0) (point)))
-
-;;                  (beginning-of-line)
-;;                  (delete-region (point) e))
-              (goto-char (point-max)))))))))
+          (if (re-search-forward "[^\s-][^\s-][\s-]*CURSOR_POS" nil 't)
+              (delete-region (match-beginning 0) (point))
+            (goto-char (point-max))))))))
 
 (add-hook 'find-file-hook 'template-insert)
