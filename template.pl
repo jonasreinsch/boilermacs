@@ -6,7 +6,3 @@ use feature qw/say switch/;
 use autodie;
 
 ## CURSOR_POS
-
-unless (caller) {
-
-}
