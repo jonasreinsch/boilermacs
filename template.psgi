@@ -6,4 +6,4 @@ my $app = sub {
        [ 'Content-Type' => 'text/plain' ],
        [ 'Hello World' ],
    ];     
-}
+};
