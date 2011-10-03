@@ -14,9 +14,11 @@
 
           ;; 3rd arg of re-search-forward 't: no error,
           ;; return nil instead when search not successful
-          (when (re-search-forward "[^\s-][^\s-][\s-]*FIlE_NAME" nil 't)
+          (while (re-search-forward "[^\s-][^\s-][\s-]*FIlE_NAME" nil 't)
             (delete-region (match-beginning 0) (point))
-            (insert (file-name-sans-extension (file-name-nondirectory file-name))))
+            (insert (capitalize (file-name-sans-extension (file-name-nondirectory file-name)))))
+
+          (goto-char (point-min))
 
           (if (re-search-forward "[^\s-][^\s-][\s-]*CURSOR_POS" nil 't)
               (delete-region (match-beginning 0) (point))
