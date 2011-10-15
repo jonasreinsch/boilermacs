@@ -1,5 +1,12 @@
 Action queue
 ------------
+* add note to presentation:
+
+    (add-hook 'after-save-hook
+              'executable-make-buffer-file-executable-if-script-p)
+
+  removes even more tedium by automatically
+  making files executable.
 * capitalize für Dateinamen ist nicht ok z.B. für Java.
   (BlaBli -> Blabli)
 * Doku: es gibt auch noch auto-insert
