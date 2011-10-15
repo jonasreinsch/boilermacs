@@ -1,8 +1,21 @@
-es gibt auch noch auto-insert
-ist aber komplizierter nur für Boilerplate.
-Außerdem (wahrscheinlich) Vorteil
-von Boilermacs: sofortiges Reload
-(Zusätzlicher lesender
-hit der Festplatte bei jedem Öffnen
-einer neuen Datei, das macht aber
-performancemäßig nichts).
+Action queue
+------------
+* capitalize für Dateinamen ist nicht ok z.B. für Java.
+  (BlaBli -> Blabli)
+* Doku: es gibt auch noch auto-insert
+  ist aber komplizierter nur für Boilerplate.
+  Außerdem (wahrscheinlich) Vorteil
+  von Boilermacs: sofortiges Reload
+  (Zusätzlicher lesender
+  hit der Festplatte bei jedem Öffnen
+  einer neuen Datei, das macht aber
+  performancemäßig nichts).   
+   
+TBD
+---
+   
+Deferred for future releases
+----------------------------
+
+Done
+----
