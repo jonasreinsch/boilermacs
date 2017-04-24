@@ -4,11 +4,24 @@
   (let ((file-name (buffer-file-name)))
     (when file-name
       (let*
-          ((e (or (file-name-extension file-name) (file-name-nondirectory file-name)))
-           (template-file-name (concat "~/templates/template." e)))
+          (
+           (fn (file-name-nondirectory file-name))
+           (ext (file-name-extension fn))
+           ;; candidate template for direct match
+           (template-file-name-fn (concat "~/templates/template." fn))
+           ;; candidate template for extension match
+           (template-file-name-ext (concat "~/templates/template." ext))
+           ;; if a direct match exists, use that
+           ;; otherwise check for extension match
+           ;; if neither exists, set template-file-name to nil
+           (template-file-name (or (and (file-readable-p template-file-name-fn)
+                                        template-file-name-fn)
+                                   (and (file-readable-p template-file-name-ext)
+                                        template-file-name-ext)))
+           )
         (when (and
                (= 0 (buffer-size))
-               (file-readable-p template-file-name))
+               template-file-name)
           (goto-char (point-min))
           (insert-file-contents template-file-name)
 
